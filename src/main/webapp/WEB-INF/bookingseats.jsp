@@ -27,7 +27,22 @@
 	
 	<br><br>
 	 --%>
-	<form action="http://localhost:8080/SeatBookingProject/booking/submit" method="GET">
+	 
+		<label> Movie Name :</label>
+		<c:forEach var="movie" items="${movie.book}">
+		<input type="text">${movie.name}
+		</c:forEach>
+<!-- 		<table> -->
+<%-- 		<c:forEach var="movie" items="${movie.book}"> --%>
+<!-- 		<tr> -->
+<!-- 		<td>Movie Name:</td> -->
+<%-- 		<td>${movie.name}</td> --%>
+<!-- 		</tr> -->
+<%-- 		</c:forEach> --%>
+<!-- 		</table> -->
+<%-- 		Movie name:<label><c:forEach var="movie" items="${movie.book}"><input type="text">${movie.name} </c:forEach></label> --%>
+		
+	<form action="http://localhost:8081/SeatBookingProject/movie/submit" method="GET">
 	<div class="container">
 				<div class="sc">
 					<h1>SCREEN</h1><br>
@@ -280,7 +295,8 @@
 								  <br><br><br>
 								  <div class="col-sm-5">
 								  	<div class="form-group">
-										<input type="submit" id="button1" value="Book" class="btn cust-btn" >
+										<button type="submit" value="submit" class="btn cust-btn">Book</button>
+										
 										
 									</div>
 								  </div>
@@ -293,15 +309,7 @@
 				</div>
 			</div>
 		</form>
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script>
-		$(document).ready(function() {
-			$("#button1").click(function() {
-				$("#seat-1").attr('disabled', !$("#seat-1").attr('disabled'));
-			});
-		});
-	</script>
+	
 	<%-- <%@ include file ="footer.jsp" %> --%>
 		
 	<!--my javascript-->

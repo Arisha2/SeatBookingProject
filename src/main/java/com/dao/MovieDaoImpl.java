@@ -15,6 +15,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import com.entity.Movie;
+import com.entity.Seats;
 
 @Transactional
 @Repository
@@ -59,6 +60,36 @@ public class MovieDaoImpl implements MovieDao{
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.getCurrentSession();
 		Movie movie = session.byId(Movie.class).load(id);
+//		System.out.println(movie);
 		return movie;
 	}
+	
+	@Override
+	public List<Seats> getAllSeats() {
+	Session session = sessionFactory.getCurrentSession();
+	CriteriaBuilder cb = session.getCriteriaBuilder();
+	CriteriaQuery<Seats> cq = cb.createQuery(Seats.class);
+	Root<Seats> root = cq.from(Seats.class);
+	cq.select(root);
+	Query query = session.createQuery(cq);
+	return query.getResultList();
+	}
+
+	@Override
+	public Seats getSeat_No(int seat_no) {
+	// TODO Auto-generated method stub
+	return null;
+	}
+
+	public Seats getInsert(int seat_no, boolean seat_status) {
+		System.out.println("inside MoviedaoImpl class inside insert seat method ");
+		Seats s = new Seats();
+		s.setSeat_no(seat_no);
+		s.setSeat_status(true);
+		Session session = sessionFactory.getCurrentSession();
+		session.update(s);
+		return s;
+		
+	}
+
 }

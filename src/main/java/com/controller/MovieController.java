@@ -11,6 +11,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import com.dao.MovieDao;
 import com.entity.Movie;
+import com.entity.Seats;
 
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -46,7 +47,23 @@ public class MovieController {
 		System.out.println(id);
 		Movie movies = movieDaoImpl.getMovie(id);
 		Model.addAttribute("book", movies);
-		return "bookingseating";
+		return "bookingseats";
 		
+	}
+	
+	@RequestMapping(value = "/listseat")
+	public String SeatBooking(Model theModel) {
+		System.out.println("In list customers method");
+		List<Seats> seat = movieDaoImpl.getAllSeats();
+		theModel.addAttribute("seats", seat);
+		return "bookingseats";
+	}
+	
+	@RequestMapping(value = "/submit")
+	public String insertSeats(@RequestParam("seat_no") int seat_no, boolean seat_status, Model Model) {
+		System.out.println("inside insert seat method");
+		Seats seat = movieDaoImpl.getInsert(seat_no, seat_status);
+		Model.addAttribute("insert", seat);
+		return "bookingseats";
 	}
 }

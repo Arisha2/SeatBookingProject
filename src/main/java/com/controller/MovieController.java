@@ -47,6 +47,8 @@ public class MovieController {
 		System.out.println(id);
 		Movie movies = movieDaoImpl.getMovie(id);
 		Model.addAttribute("book", movies);
+		System.out.println(movies);
+		
 		return "bookingseats";
 		
 	}

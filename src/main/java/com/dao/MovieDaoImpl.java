@@ -60,7 +60,7 @@ public class MovieDaoImpl implements MovieDao{
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.getCurrentSession();
 		Movie movie = session.byId(Movie.class).load(id);
-//		System.out.println(movie);
+		//System.out.println(movie);
 		return movie;
 	}
 	

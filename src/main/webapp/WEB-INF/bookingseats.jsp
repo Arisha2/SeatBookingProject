@@ -27,10 +27,10 @@
 	
 	<br><br>
 	 --%>
-	 
+	 <c:forEach var="movie" items="${movie.book}">
 		<label> Movie Name :</label>
-		<c:forEach var="movie" items="${movie.book}">
-		<input type="text">${movie.name}
+		
+		<label>${movie.name}</label>
 		</c:forEach>
 <!-- 		<table> -->
 <%-- 		<c:forEach var="movie" items="${movie.book}"> --%>

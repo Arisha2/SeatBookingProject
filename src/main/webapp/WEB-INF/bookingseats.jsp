@@ -280,7 +280,7 @@
 								  <br><br><br>
 								  <div class="col-sm-5">
 								  	<div class="form-group">
-										<button type="submit"  value="submit" class="btn cust-btn" >Book</button>
+										<input type="submit" id="button1" value="Book" class="btn cust-btn" >
 										
 									</div>
 								  </div>
@@ -293,7 +293,15 @@
 				</div>
 			</div>
 		</form>
-				
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			$("#button1").click(function() {
+				$("#seat-1").attr('disabled', !$("#seat-1").attr('disabled'));
+			});
+		});
+	</script>
 	<%-- <%@ include file ="footer.jsp" %> --%>
 		
 	<!--my javascript-->

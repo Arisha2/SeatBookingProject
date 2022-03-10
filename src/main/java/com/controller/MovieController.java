@@ -55,18 +55,18 @@ public class MovieController {
 	
 	@RequestMapping(value = "/listseat")
 	public String SeatBooking(Model theModel) {
-		System.out.println("In list customers method");
+		System.out.println("In list seats method");
 		List<Seats> seat = movieDaoImpl.getAllSeats();
 		theModel.addAttribute("seats", seat);
 		return "bookingseats";
 	}
 	
 	@RequestMapping(value = "/submit")
-	public String insertSeats(@RequestParam("seat_no[]") int seat_no[], boolean seat_status, Model Model) {
+	public String insertSeats(@RequestParam("seat_no") int seat_no[], boolean seat_status, Model Model) {
 		System.out.println("inside insert seat method");
 		for(int i=0;i<seat_no.length;i++) {
 		Seats seat = movieDaoImpl.getInsert(seat_no[i], seat_status);
 		Model.addAttribute("insert", seat);}
-		return "bookingseats";
+		return "seatsuccess";
 	}
 }

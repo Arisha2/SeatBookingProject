@@ -39,28 +39,17 @@ public class MovieDaoImpl implements MovieDao{
         cq.select(root);
         Query query = session.createQuery(cq);
         List <Movie> list=query.getResultList();
+        System.out.println(list.toString()+list.size());
         return list;
     }
 	
-	@Override
-	public List<Movie> getMovies(int id) {
-		// TODO Auto-generated method stub
-		Session session = sessionFactory.getCurrentSession();
-        CriteriaBuilder cb = session.getCriteriaBuilder();
-        CriteriaQuery < Movie > cq = cb.createQuery(Movie.class);
-        Root < Movie > root = cq.from(Movie.class);
-        cq.select(root);
-        Query query = session.createQuery(cq);
-        List <Movie> list=query.getResultList();
-        return list;
-	}
 
 	@Override
 	public Movie getMovie(int id) {
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.getCurrentSession();
 		Movie movie = session.byId(Movie.class).load(id);
-		//System.out.println(movie);
+		//System.out.println(movie);		
 		return movie;
 	}
 	
@@ -75,11 +64,7 @@ public class MovieDaoImpl implements MovieDao{
 	return query.getResultList();
 	}
 
-	@Override
-	public Seats getSeat_No(int seat_no) {
-	// TODO Auto-generated method stub
-	return null;
-	}
+	
 
 	public Seats getInsert(int seat_no, boolean seat_status) {
 		System.out.println("inside MoviedaoImpl class inside insert seat method ");
@@ -87,7 +72,7 @@ public class MovieDaoImpl implements MovieDao{
 		s.setSeat_no(seat_no);
 		s.setSeat_status(true);
 		Session session = sessionFactory.getCurrentSession();
-		session.update(s);
+		session.update(s);		
 		return s;
 		
 	}

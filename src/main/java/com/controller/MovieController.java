@@ -47,8 +47,8 @@ public class MovieController {
 		System.out.println(id);
 		Movie movies = movieDaoImpl.getMovie(id);
 		Model.addAttribute("book", movies);
-		System.out.println(movies);
-		
+		//System.out.println(movies);
+		System.out.println("After model attribute");
 		return "bookingseats";
 		
 	}
@@ -62,10 +62,11 @@ public class MovieController {
 	}
 	
 	@RequestMapping(value = "/submit")
-	public String insertSeats(@RequestParam("seat_no") int seat_no, boolean seat_status, Model Model) {
+	public String insertSeats(@RequestParam("seat_no[]") int seat_no[], boolean seat_status, Model Model) {
 		System.out.println("inside insert seat method");
-		Seats seat = movieDaoImpl.getInsert(seat_no, seat_status);
-		Model.addAttribute("insert", seat);
+		for(int i=0;i<seat_no.length;i++) {
+		Seats seat = movieDaoImpl.getInsert(seat_no[i], seat_status);
+		Model.addAttribute("insert", seat);}
 		return "bookingseats";
 	}
 }

@@ -16,14 +16,6 @@ public class Seats {
 	@Column(name = "seat_status")
 	private boolean seat_status;
 
-//	public int getSeat_id() {
-//		return seat_id;
-//	}
-//
-//	public void setSeat_id(int seat_id) {
-//		this.seat_id = seat_id;
-//	}
-
 	public int getSeat_no() {
 		return seat_no;
 	}

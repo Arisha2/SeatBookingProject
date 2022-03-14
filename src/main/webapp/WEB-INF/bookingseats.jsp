@@ -35,31 +35,27 @@ function checkRadio(myRadio){
 	</div>
 	
 	<br><br>
-	 --%><center>
-	  <div class="movie-container">
+	 --%>
+	  
+	<form action="http://localhost:8081/SeatBookingProject/movie/submit" method="GET">
+	
+		<div class="container">
+
      	<label> Movie Name : </label> 
       	<c:out value="${book.name}" />
       	
-      	</div><br>
-	  <div class="movie-container">
-      <input type="date" name="show_date" id="showdate"  ><br>
-   
-	 </div><br>
-	<label for="seatbooking">Select Show Time:</label>	
+      	<br>
+	  
+      			<input type="date" name="show_date" id="showdate"  >
+      			<br>
+	 			<br>
+				<label for="seatbooking">Select Show Time:</label>	
 
-	<input type="radio" name="start_time" value="9:00 am" onclick="checkRadio(this)"> 9:00 am
-	<input type="radio" name="start_time" value="12:00 pm"> 12:00 pm
-	<input type="radio" name="start_time" value="4:00 pm"> 4:00 pm
-	<input type="radio" name="start_time" value="9:00 pm"> 9:00 pm</center><br>
-	
-	<%-- <div class="head-all">	
-		<%@ include file ="header.jsp" %>
-	</div>
-	<br><br>
-	 --%>
-	 </div>
-	<form action="http://localhost:8081/SeatBookingProject/movie/submit" method="GET">
-	<div class="container">
+				<input type="radio" name="start_time" value="9:00 am" onclick="checkRadio(this)"> 9:00 am
+				<input type="radio" name="start_time" value="12:00 pm"> 12:00 pm
+				<input type="radio" name="start_time" value="4:00 pm"> 4:00 pm
+				<input type="radio" name="start_time" value="9:00 pm"> 9:00 pm<br>
+				
 				<div class="sc">
 					<h1>SCREEN</h1><br>
 					<!-- <h5>RS. 150</h5> -->

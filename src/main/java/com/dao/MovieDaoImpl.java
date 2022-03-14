@@ -1,5 +1,6 @@
 package com.dao;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Query;
@@ -66,11 +67,15 @@ public class MovieDaoImpl implements MovieDao{
 
 	
 
-	public Booking getInsert(int seat_no, boolean seat_status) {
+	public Booking getInsert(boolean seat_no, Date show_date, String showtime, int movie_id) {
 		System.out.println("inside MoviedaoImpl class inside insert seat method ");
 		Booking s = new Booking();
 //		s.setSeat_no(seat_no);
 //		s.setSeat_status(true);
+		s.setShow_date(show_date);
+		s.setShow_time(showtime);
+		s.getMovie_id();
+		
 		Session session = sessionFactory.getCurrentSession();
 		session.update(s);		
 		return s;

@@ -16,6 +16,7 @@ import com.entity.Booking;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -62,11 +63,12 @@ public class MovieController {
 	}
 	
 	@RequestMapping(value = "/submit")
-	public String insertSeats(@RequestParam("seat_no") int seat_no[], boolean seat_status, Model Model) {
+	public String insertSeats(@RequestParam("seat_no") boolean seat_no[], @RequestParam("show_date") Date show_date , @RequestParam("start_time") String show_time , int movie_id, Model Model) {
 		System.out.println("inside insert seat method");
 		for(int i=0;i<seat_no.length;i++) {
-			Booking seat = movieDaoImpl.getInsert(seat_no[i], seat_status);
-		Model.addAttribute("insert", seat);}
+			Booking seat = movieDaoImpl.getInsert(seat_no[i], show_date, show_time, movie_id);
+		Model.addAttribute("insert", seat);
+		}
 		return "seatsuccess";
 	}
 	

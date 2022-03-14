@@ -25,7 +25,7 @@ public class Movie {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="movie_id")
-	private int id;
+	private int movie_id;
 	
 	@Column(name="movie_name")
 	private String name;
@@ -70,13 +70,17 @@ public class Movie {
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	@Temporal(TemporalType.DATE)
 	private Date MovieEndDate;
-	public int getId() {
-		return id;
+	
+
+	public int getMovie_id() {
+		return movie_id;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setMovie_id(int movie_id) {
+		this.movie_id = movie_id;
 	}
+
+	
 
 	public String getName() {
 		return name;
@@ -160,7 +164,7 @@ public class Movie {
 
 	@Override
 	public String toString() {
-		return "ShowMovie [id=" + id + ", name=" + name + ", duration=" + duration + ", image=" + Arrays.toString(image)
+		return "ShowMovie [id=" + movie_id + ", name=" + name + ", duration=" + duration + ", image=" + Arrays.toString(image)
 				+ ", base64Image=" + base64Image + ", cast_names=" + cast_names + ", Language=" + Language + ", Price="
 				+ Price + ", MovieStartDate=" + MovieStartDate + ", MovieEndDate=" + MovieEndDate + "]";
 	}

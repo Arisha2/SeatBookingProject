@@ -20,28 +20,44 @@
     
 </head>
 <body>
+<script>
+function checkRadio(myRadio){
+	
+	if(myRadio.checked){
+		alert("after radio");
+	}
+	
+}
 
+</script>
 	<%-- <div class="head-all">	
 		<%@ include file ="header.jsp" %>
 	</div>
 	
 	<br><br>
+	 --%><center>
+	  <div class="movie-container">
+     	<label> Movie Name : </label> 
+      	<c:out value="${book.name}" />
+      	
+      	</div><br>
+	  <div class="movie-container">
+      <input type="date" name="show_date" id="showdate"  ><br>
+   
+	 </div><br>
+	<label for="seatbooking">Select Show Time:</label>	
+
+	<input type="radio" name="start_time" value="9:00 am" onclick="checkRadio(this)"> 9:00 am
+	<input type="radio" name="start_time" value="12:00 pm"> 12:00 pm
+	<input type="radio" name="start_time" value="4:00 pm"> 4:00 pm
+	<input type="radio" name="start_time" value="9:00 pm"> 9:00 pm</center><br>
+	
+	<%-- <div class="head-all">	
+		<%@ include file ="header.jsp" %>
+	</div>
+	<br><br>
 	 --%>
-	 <c:forEach var="movie" items="${movie.book}">
-		<label> Movie Name :</label>
-		
-		<label>${movie.name}</label>
-		</c:forEach>
-<!-- 		<table> -->
-<%-- 		<c:forEach var="movie" items="${movie.book}"> --%>
-<!-- 		<tr> -->
-<!-- 		<td>Movie Name:</td> -->
-<%-- 		<td>${movie.name}</td> --%>
-<!-- 		</tr> -->
-<%-- 		</c:forEach> --%>
-<!-- 		</table> -->
-<%-- 		Movie name:<label><c:forEach var="movie" items="${movie.book}"><input type="text">${movie.name} </c:forEach></label> --%>
-		
+	 </div>
 	<form action="http://localhost:8081/SeatBookingProject/movie/submit" method="GET">
 	<div class="container">
 				<div class="sc">
@@ -78,7 +94,7 @@
 								  <div class="col-sm-12">
 								  <input id="seat-1" class="seat-select" type="checkbox" value="1" name="seat_no" >
 								  <label for="seat-1" class="seat">1</label>
-								  <input id="seat-2" class="seat-select" type="checkbox" <c:if test="${showseat.seat_status == true} and ${showseat.seat_no ==2}"> checked=checked</c:if> value="2" name="seat_no"/>
+								  <input id="seat-2" class="seat-select" type="checkbox" value="2" <c:if test="${showseat.seat_status == true} and ${showseat.seat_no == 2}"> disabled = true</c:if> name="seat_no"/>
 								  <label for="seat-2" class="seat">2</label>
 								  <input id="seat-3" class="seat-select" type="checkbox" value="3" name="seat_no" />
 								  <label for="seat-3" class="seat">3</label>
@@ -296,7 +312,7 @@
 								  <div class="col-sm-5">
 								
 								  	<div class="form-group">
-										<button type="submit" id="btn" value="submit" class="btn cust-btn">Book</button>		
+										<button type="submit" id="btn" value="submit" class="btn cust-btn" >Book</button>		
 																					
 									</div>
 								  </div>								  
@@ -323,18 +339,7 @@
 	<%-- <%@ include file ="footer.jsp" %> --%>
 		
 	<!--my javascript-->
-	<script type="text/javascript">
-	        const btn = document.querySelector('#btn');
-	        btn.addEventListener('click', (event) => {
-	            let checkboxes = document.querySelectorAll('input[name="seat_no[]"]:checked');
-	            let values = [];
-	            checkboxes.forEach((checkbox) => {
-	                values.push(checkbox.value);
-	            });
-	            alert("The seats you selected is: "+values);
-	            values.disabled=true;
-	        });    	   
-   </script>
+	
 	<script src="<%=request.getContextPath()%>/resources/js/accordion.js"></script>
 	<!--/my javascript-->
 		

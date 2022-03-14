@@ -75,7 +75,7 @@ public class MovieDaoImpl implements MovieDao{
 		s.setShow_date(show_date);
 		s.setShow_time(showtime);
 		s.getMovie_id();
-		
+		s.setMovie_id(movie_id);
 		Session session = sessionFactory.getCurrentSession();
 		session.update(s);		
 		return s;

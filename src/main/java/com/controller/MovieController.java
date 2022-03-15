@@ -43,10 +43,10 @@ public class MovieController {
 	}
 	
 	@RequestMapping(value = "/book")
-	public String BookMovies(@RequestParam("id") int id, Model Model) {
+	public String BookMovies(@RequestParam("movie_id") int movie_id, Model Model) {
 		System.out.println(" inside Movie Controller inside book method");
-		System.out.println(id);
-		Movie movies = movieDaoImpl.getMovie(id);
+		System.out.println(movie_id);
+		Movie movies = movieDaoImpl.getMovie(movie_id);
 		Model.addAttribute("book", movies);
 		//System.out.println(movies);
 		System.out.println("After model attribute");

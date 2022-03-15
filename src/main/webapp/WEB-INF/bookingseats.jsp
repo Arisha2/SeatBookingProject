@@ -6,7 +6,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/bootstrap/css/bootstrap.min.css" type="text/css">
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/style.css" type="text/css">
@@ -17,19 +17,39 @@
   
     <title>Select Seats :: Bookmymovie.com</title>
    
-    
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
 </head>
 <body>
 <script>
-function checkRadio(myRadio){
+function checkTime(time){
+// 	var chk = document.getElementById("time");
+		var getSelectedValue = document.querySelector( 'input[name="start_time"]:checked');   
+		if(getSelectedValue != null) {   
+			 alert("Selected radio button values is: " + getSelectedValue.value);}
+		
+	 	else {  alert("No Selected radio button  " );}
 	
-	if(myRadio.checked){
-		alert("after radio");
-	}
 	
 }
+/* $(function() {
+	   $("input.seat-select").prop("disabled", true);
+	}); */
+	
 
+$(document).ready(function() {
+    $('input[type="checkbox"]').click(function() {
+        if($(this).prop("checked") == true) {
+        	$(this).attr('disabled', 'disabled');
+        	
+
+        }
+        else if($(this).prop("checked") == false) {
+        	$(this).removeAttr("disabled");
+        }
+      });
+  });
 </script>
+
 	<%-- <div class="head-all">	
 		<%@ include file ="header.jsp" %>
 	</div>
@@ -40,22 +60,22 @@ function checkRadio(myRadio){
 	<form action="http://localhost:8081/SeatBookingProject/movie/submit" method="GET">
 	
 		<div class="container">
-
+		<center>
      	<label> Movie Name : </label> 
       	<c:out value="${book.name}" />
       	
       	<br>
-	  
+	  			
       			<input type="date" name="show_date" id="showdate"  >
       			<br>
 	 			<br>
 				<label for="seatbooking">Select Show Time:</label>	
 
-				<input type="radio" name="start_time" value="9:00 am" onclick="checkRadio(this)"> 9:00 am
-				<input type="radio" name="start_time" value="12:00 pm"> 12:00 pm
-				<input type="radio" name="start_time" value="4:00 pm"> 4:00 pm
-				<input type="radio" name="start_time" value="9:00 pm"> 9:00 pm<br>
-				
+				<input type="radio" name="start_time" value="9:00am" onclick="checkTime(this)" id="nineam"> 9:00 am
+				<input type="radio" name="start_time" value="12:00pm" onclick="checkTime(this)" id="twelveam"> 12:00 pm
+				<input type="radio" name="start_time" value="4:00pm" onclick="checkTime(this)" id="fourpm"> 4:00 pm
+				<input type="radio" name="start_time" value="9:00pm" onclick="checkTime(this)" id="ninepm"> 9:00 pm<br>
+				</center>
 				<div class="sc">
 					<h1>SCREEN</h1><br>
 					<!-- <h5>RS. 150</h5> -->
@@ -88,9 +108,10 @@ function checkRadio(myRadio){
 								
 								  <div class="row justify-content-center">
 								  <div class="col-sm-12">
+<%-- 								  <c:set var="showseat" value="true"/> --%>
 								  <input id="seat-1" class="seat-select" type="checkbox" value="1" name="seat_no" >
 								  <label for="seat-1" class="seat">1</label>
-								  <input id="seat-2" class="seat-select" type="checkbox" value="2" <c:if test="${showseat.seat_status == true} and ${showseat.seat_no == 2}"> disabled = true</c:if> name="seat_no"/>
+								  <input id="seat-2" class="seat-select" type="checkbox" value="2" name="seat_no2" <c:if test="${showseat.seatno2 == 1} "> checked=checked </c:if> />
 								  <label for="seat-2" class="seat">2</label>
 								  <input id="seat-3" class="seat-select" type="checkbox" value="3" name="seat_no" />
 								  <label for="seat-3" class="seat">3</label>
@@ -318,11 +339,13 @@ function checkRadio(myRadio){
 				</div>
 			</div>
 		</form>
+		
 	<table id="movieTable" class="center">
 	
 	<c:forEach var="showseat" items="${seats}">
 	<tr>
-		<c:if test="${showseat.seat_status == true}">
+	<td>${showseat.seat_no2}</td>
+		<c:if test="${showseat.seat_no2 == true}">
 		<td>${showseat.seat_no}</td>
 		<td>${showseat.seat_status}</td>
 		<input id="seat-1" class="seat-select" type="checkbox" value="1" name="seat_no" >

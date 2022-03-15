@@ -46,10 +46,10 @@ public class MovieDaoImpl implements MovieDao{
 	
 
 	@Override
-	public Movie getMovie(int id) {
+	public Movie getMovie(int movie_id) {
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.getCurrentSession();
-		Movie movie = session.byId(Movie.class).load(id);
+		Movie movie = session.byId(Movie.class).load(movie_id);
 		//System.out.println(movie);		
 		return movie;
 	}

@@ -51,7 +51,9 @@ table.center {
   margin-left: auto; 
   margin-right: auto;
 }
-
+.input{
+align:center;
+}
 </style>
 <h1>Movies</h1>
 
@@ -67,7 +69,7 @@ table.center {
 		<td>${ShowMovie.language}</td>
 		<td>${ShowMovie.duration}</td>		
 		<td>${ShowMovie.cast_names}</td>		
-		<td><button type="submit" class="selectmovie" name="id" value="${ShowMovie.id}">Book</button></td>
+		<td><button type="submit" class="selectmovie" name="movie_id" value="${ShowMovie.movie_id}">Book</button></td>
 		</tr>
 	</c:forEach>
 </table>

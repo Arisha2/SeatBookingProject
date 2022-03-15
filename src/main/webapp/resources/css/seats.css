@@ -22,7 +22,9 @@
     display: none;
 }
 
-
+.seat-select:disabled+.seat{
+	background: #dc143c;
+}
 .seat-select:checked+.seat {
     background: #00b509;
 	border:0.5px solid #03a103;

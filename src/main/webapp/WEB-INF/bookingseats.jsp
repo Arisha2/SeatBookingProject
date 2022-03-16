@@ -25,45 +25,40 @@ function checkTime(time){
 // 	var chk = document.getElementById("time");
 		var getSelectedValue = document.querySelector( 'input[name="start_time"]:checked');   
 		if(getSelectedValue != null) {   
-			 alert("Selected radio button values is: " + getSelectedValue.value);}
+			 alert("Selected radio button values is: " + getSelectedValue.value);
+			 window.location = "http://localhost:8081/SeatBookingProject/movie/timeslot";  	 
+		}
 		
 	 	else {  alert("No Selected radio button  " );}
 	
 	
 }
-/* $(function() {
-	   $("input.seat-select").prop("disabled", true);
-	}); */
+//  $(function() {
+// 	   $("input.seat-select").prop("disabled", true);
+// 	}); 
 	
 
-$(document).ready(function() {
-    $('input[type="checkbox"]').click(function() {
-        if($(this).prop("checked") == true) {
-        	$(this).attr('disabled', 'disabled');
+//    $('input[type="checkbox"]').click(function() {
+//         if($(this).prop("checked") == true) {
+//         	$(this).attr('disabled', 'disabled');
         	
-
-        }
-        else if($(this).prop("checked") == false) {
-        	$(this).removeAttr("disabled");
-        }
-      });
-  });
+// $(document).ready(function() {
+ 
+//         }
+//         else if($(this).prop("checked") == false) {
+//         	$(this).removeAttr("disabled");
+//         }
+//       });
+//   });
 </script>
+<script>document.getElementById("seat-2").disabled= seat_no2 == 1 ? true : false;</script>
 
-	<%-- <div class="head-all">	
-		<%@ include file ="header.jsp" %>
-	</div>
-	
-	<br><br>
-	 --%>
-	  
-	<form action="http://localhost:8081/SeatBookingProject/movie/submit" method="GET">
-	
+	<form action="http://localhost:8081/SeatBookingProject/movie/timeslot">
 		<div class="container">
 		<center>
      	<label> Movie Name : </label> 
       	<c:out value="${book.name}" />
-      	
+      	<c:out value="${slots }"></c:out>
       	<br>
 	  			
       			<input type="date" name="show_date" id="showdate"  >
@@ -76,6 +71,14 @@ $(document).ready(function() {
 				<input type="radio" name="start_time" value="4:00pm" onclick="checkTime(this)" id="fourpm"> 4:00 pm
 				<input type="radio" name="start_time" value="9:00pm" onclick="checkTime(this)" id="ninepm"> 9:00 pm<br>
 				</center>
+				<div class="form-group">
+				
+				</div>
+		</div>
+	</form>
+	<form action="http://localhost:8081/SeatBookingProject/movie/submit" method="GET">
+	
+		
 				<div class="sc">
 					<h1>SCREEN</h1><br>
 					<!-- <h5>RS. 150</h5> -->
@@ -109,10 +112,12 @@ $(document).ready(function() {
 								  <div class="row justify-content-center">
 								  <div class="col-sm-12">
 <%-- 								  <c:set var="showseat" value="true"/> --%>
-								  <input id="seat-1" class="seat-select" type="checkbox" value="1" name="seat_no" >
+								  <input id="seat-1" class="seat-select" type="checkbox" value="1" name="seat_no1" >
 								  <label for="seat-1" class="seat">1</label>
-								  <input id="seat-2" class="seat-select" type="checkbox" value="2" name="seat_no2" <c:if test="${showseat.seatno2 == 1} "> checked=checked </c:if> />
+								  <input id="seat-2" class="seat-select" type="checkbox" value="2" name="seat_no2"  <c:if test="${booking.seat_no2 == 1} "> checked= "checked" </c:if> />
 								  <label for="seat-2" class="seat">2</label>
+								  
+								 
 								  <input id="seat-3" class="seat-select" type="checkbox" value="3" name="seat_no" />
 								  <label for="seat-3" class="seat">3</label>
 								  <input id="seat-4" class="seat-select" type="checkbox" value="4" name="seat_no" />

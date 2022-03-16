@@ -3,6 +3,7 @@ package com.controller;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
@@ -55,13 +56,25 @@ public class MovieController {
 	}
 	
 	@RequestMapping(value = "/listseat")
-	public String SeatBooking(Model theModel) {
+	public String SeatBooking(int booking_id,Model theModel) {
 		System.out.println("In list seats method");
-		List<Booking> seat = movieDaoImpl.getAllSeats();
+		Booking seat = movieDaoImpl.getAllSeats(booking_id);
 		theModel.addAttribute("seats", seat);
 		return "bookingseats";
 	}
 	
+	@RequestMapping(value = "/timeslot")
+	public String BookSlot(@RequestParam(value="show_date", required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)Date show_date, @RequestParam(value="start_time", required = false) String show_time, Model Model) {
+		System.out.println(" inside book slot controller");
+		System.out.println(show_time);
+		System.out.println(show_date);
+		Booking booking = movieDaoImpl.getMovie(show_date, show_time);
+		Model.addAttribute("slots", booking);
+		//System.out.println(movies);
+		System.out.println("After model attribute");
+		return "bookingseats";
+		
+	}
 	@RequestMapping(value = "/submit")
 	public String insertSeats(@RequestParam("seat_no") boolean seat_no[], @RequestParam("show_date") Date show_date , @RequestParam("start_time") String show_time , int movie_id, Model Model) {
 		System.out.println("inside insert seat method");

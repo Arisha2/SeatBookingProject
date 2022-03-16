@@ -13,7 +13,8 @@ import com.entity.Booking;
 public interface MovieDao {
 	public List <Movie> getShowMovie();
 	public Movie getMovie(int id);
-	public List<Booking> getAllSeats();
+	public Booking getAllSeats(int booking_id);
 	public Booking getInsert(boolean seat_no, Date show_date, String showtime, int movie_id);
+	public Booking getMovie(Date show_date, String show_time); //for booking slot
 	
 }

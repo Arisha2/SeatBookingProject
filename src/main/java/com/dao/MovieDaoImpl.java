@@ -55,14 +55,10 @@ public class MovieDaoImpl implements MovieDao{
 	}
 	
 	@Override
-	public List<Booking> getAllSeats() {
-	Session session = sessionFactory.getCurrentSession();
-	CriteriaBuilder cb = session.getCriteriaBuilder();
-	CriteriaQuery<Booking> cq = cb.createQuery(Booking.class);
-	Root<Booking> root = cq.from(Booking.class);
-	cq.select(root);
-	Query query = session.createQuery(cq);
-	return query.getResultList();
+	public Booking getAllSeats(int booking_id) {
+		Session session = sessionFactory.getCurrentSession();
+		Booking book = session.byId(Booking.class).load(booking_id);
+		return book;
 	}
 
 	
@@ -76,10 +72,21 @@ public class MovieDaoImpl implements MovieDao{
 		s.setShow_time(showtime);
 		s.getMovie_id();
 		s.setMovie_id(movie_id);
+		
 		Session session = sessionFactory.getCurrentSession();
 		session.update(s);		
 		return s;
 		
+	}
+
+
+	@Override
+	public Booking getMovie(Date show_date, String show_time) {
+		// TODO Auto-generated method stub
+		Session session = sessionFactory.getCurrentSession();
+		//Movie movie = session.byId(Movie.class).load(movie_id);
+		Booking booking = session.byId(Booking.class).load(show_time);
+		return booking;
 	}
 
 }

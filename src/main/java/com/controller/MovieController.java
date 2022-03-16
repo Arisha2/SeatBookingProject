@@ -64,11 +64,12 @@ public class MovieController {
 	}
 	
 	@RequestMapping(value = "/timeslot")
-	public String BookSlot(@RequestParam(value="show_date", required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)Date show_date, @RequestParam(value="start_time", required = false) String show_time, Model Model) {
+	public String BookSlot(@RequestParam(value="show_date", required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)Date show_date, @RequestParam(value="start_time", required = false) String show_time, @RequestParam(value="movie_id", required=false)Integer movie_id, Model Model) {
 		System.out.println(" inside book slot controller");
+		System.out.println(movie_id);
 		System.out.println(show_time);
 		System.out.println(show_date);
-		Booking booking = movieDaoImpl.getMovie(show_date, show_time);
+		Booking booking = movieDaoImpl.getMovie(movie_id,show_date, show_time);
 		Model.addAttribute("slots", booking);
 		//System.out.println(movies);
 		System.out.println("After model attribute");

@@ -53,7 +53,7 @@ function checkTime(time){
 </script>
 <script>document.getElementById("seat-2").disabled= seat_no2 == 1 ? true : false;</script>
 
-	<form action="http://localhost:8081/SeatBookingProject/movie/timeslot">
+	<form action="http://localhost:8080/SeatBookingProject/movie/timeslot">
 		<div class="container">
 		<center>
      	<label> Movie Name : </label> 
@@ -76,7 +76,7 @@ function checkTime(time){
 				</div>
 		</div>
 	</form>
-	<form action="http://localhost:8081/SeatBookingProject/movie/submit" method="GET">
+	<form action="http://localhost:8080/SeatBookingProject/movie/submit" method="GET">
 	
 		
 				<div class="sc">

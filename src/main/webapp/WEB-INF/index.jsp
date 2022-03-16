@@ -59,7 +59,7 @@ align:center;
 
 <input type="text" id="keyword" onkeyup="myFunction()" placeholder="Search for movie names.." title="Type in a name">
 <br/>
-<form action="http://localhost:8081/SeatBookingProject/movie/book" >
+<form action="http://localhost:8080/SeatBookingProject/movie/book" >
 <table id="movieTable" class="center">
 	
 	<c:forEach var="ShowMovie" items="${movieslist}">

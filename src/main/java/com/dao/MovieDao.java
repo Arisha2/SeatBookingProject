@@ -15,6 +15,6 @@ public interface MovieDao {
 	public Movie getMovie(int id);
 	public Booking getAllSeats(int booking_id);
 	public Booking getInsert(boolean seat_no, Date show_date, String showtime, int movie_id);
-	public Booking getMovie(Date show_date, String show_time); //for booking slot
+	public Booking getMovie(int movie_id,Date show_date, String show_time); //for booking slot
 	
 }

@@ -81,7 +81,7 @@ public class MovieDaoImpl implements MovieDao{
 
 
 	@Override
-	public Booking getMovie(Date show_date, String show_time) {
+	public Booking getMovie(int movie_id,Date show_date, String show_time) {
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.getCurrentSession();
 		//Movie movie = session.byId(Movie.class).load(movie_id);
